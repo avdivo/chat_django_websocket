@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Room</title>
+    {% load static %}
+</head>
+<body>
+    <h2>Пользователь {{user}} в комнате {{ room }}</h2>
+    <input id="message-input" type="text" size="100"><br>
+    <input id="btn-submit" type="button" value="Send">
+    <div id="chat">
+
+    </div>
+    {{ room|json_script:"room-name" }}
+    {{ user|json_script:"user-name" }}
+
+    <script src="{% static 'jquery-3.6.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'script.js' %}"></script>
+</body>
+</html>
