@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import path
 
 from main import views
+from main.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.room),
+    path('', views.room,  name='index'),
+    path('chat/next_page/', next_page, name='next_page'),
     path('chat/<str:room>/', views.chat),
+
 ]

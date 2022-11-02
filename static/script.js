@@ -24,9 +24,15 @@ webSocket.onmessage = function(e) {
     if (data.what_it == 'user_status'){
         chat.innerHTML += '<div class="msg">' + data.message + '</div>'
     }
+};
 
+// ---------------------------------------------------------------------------
+// Соединение разорвано
 
-//    alert($('#mes1').text())
+webSocket.onclose = function(event) {
+  if (event.wasClean) {
+    location.reload();
+  }
 };
 
 
@@ -45,32 +51,41 @@ btnSubmit.addEventListener("click", () => {
 // -------------------------------------------------------------------------------------
 // Отправка фильтров на API. Получение слов и вывод
 function get_page(){
-        let send = {
-            user: userName,
-            room: roomName,
-            page: page,
-        };
-        let data = JSON.stringify(send);
+    var csrf_token = $('#next_page [name="csrfmiddlewaretoken"]').val();
+    let send = {
+        user: userName,
+        room: roomName,
+        page: page,
+    };
+    let data = JSON.stringify(send);
+     $.ajax({
+        url: $('#next_page').attr("action"),
+        type: 'POST',
+         headers: {
+            'X-CSRFToken': csrf_token
+         },
+        data: data,
+        cache: true,
+        success: function (data) {
 
-         $.ajax({
-             url: url_api,
-             type: 'POST',
-               headers: {
-    "Content-type": "application/json"
-  },
-             data: data,
-             cache: true,
-             success: function (data) {
-
-                // Вывод полученных сообщений
-                let time = data['time'];
-                data = data['words'];
-                $('#out').append('<div class="alert alert-danger" role="alert">Всего: ' + s + " слов</div>");
-
-             },
-             error: function(){
-                 console.log("error")
-             }
-         })
+        // Вывод полученных сообщений
+        let string = data['string'];
+            $('#chat').prepend('<div class="msg">' + string + '</div>');
+        },
+        error: function(){
+         console.log("error")
+        }
+     })
 
     }
+
+// -------------------------------------------------------------------------------
+// Когда прокрутка экрана доходиь до 0 запускаем подгрузку сообщений
+
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+    if (document.body.scrollTop == 0 && document.documentElement.scrollTop == 0) {
+        get_page();
+    }
+}
+// -----------------------------------------------------------------------------------------

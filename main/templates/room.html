@@ -17,5 +17,11 @@
 
     <script src="{% static 'jquery-3.6.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'script.js' %}"></script>
+
+
+    <form action="{% url 'next_page' %}" method="post" id="next_page">
+        {% csrf_token %}
+    </form>
+
 </body>
 </html>
