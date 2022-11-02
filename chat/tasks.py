@@ -1,5 +1,4 @@
 from chat.celery import app
-from django.conf import settings
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 

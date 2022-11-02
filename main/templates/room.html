@@ -7,13 +7,15 @@
 </head>
 <body>
     <h2>Пользователь {{user}} в комнате {{ room }}</h2>
+    <div id="chat"></div>
     <input id="message-input" type="text" size="100"><br>
     <input id="btn-submit" type="button" value="Send">
-    <div id="chat">
 
-    </div>
+
     {{ room|json_script:"room-name" }}
     {{ user|json_script:"user-name" }}
+    {{ mes_count|json_script:"mes-count" }}
+
 
     <script src="{% static 'jquery-3.6.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'script.js' %}"></script>
