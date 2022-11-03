@@ -34,5 +34,4 @@ def next_page(request):
         return JsonResponse({'return':'', 'page': page})  # Выводить нечего
 
     messages = list(paginator.get_page(page-1))
-    print(json.loads(messages), '--------------------')
-    return JsonResponse({'return': serializers.serialize('json', messages), 'page': page})
+    return JsonResponse({'return': messages, 'page': page})

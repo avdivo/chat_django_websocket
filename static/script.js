@@ -78,13 +78,13 @@ function get_page(scroll=1){
         data: data,
         cache: true,
         success: function (data) {
-
+        console.log(data['return'])
         // Вывод полученных сообщений
         if (data['return'] != '') {
-            let string = JSON.parse(data['return']);
+            let string = data['return'];
             page = data.page
             for (let item of Object.values(string)){
-                $('#chat').prepend('<div class="msg">' + item.fields.user + '<br>' + item.fields.text + '<br>' + item.fields.created + '</div>');
+                $('#chat').prepend('<div class="msg">' + item.user__username + '<br>' + item.text + '<br>' + item.created + '</div>');
             }
             if (scroll) {
                  // Переход к выведенным словам
