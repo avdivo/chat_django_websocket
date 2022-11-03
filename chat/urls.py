@@ -21,8 +21,10 @@ from main.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.room,  name='index'),
+    path('', LoginView.as_view(), name="login"),
+    path('exit/', exit, name="exit"),
+    path('rooms/', rooms,  name='rooms'),
     path('chat/next_page/', next_page, name='next_page'),
-    path('chat/<str:room>/', views.chat),
+    path('chat/<str:room>/', chat, name='chat'),
 
 ]

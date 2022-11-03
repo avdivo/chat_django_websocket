@@ -1,13 +1,23 @@
 from django.core.paginator import Paginator
+from django.views.generic import TemplateView
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .models import Message, Room
+from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 import json
+from django.db.models import Count
+
+# Авторизация
+async def auth(request):
+    return render(request, 'login.html')
 
 # Выбор или создание комнаты
-async def room(request):
-    return render(request, 'index.html')
+def rooms(request):
+    rooms = Message.objects.values('room').distinct()
+    rooms = [x['room'] for x in rooms]
+    return render(request, 'rooms.html', locals())
 
 
 # Вход в чат
@@ -35,3 +45,30 @@ def next_page(request):
 
     messages = list(paginator.get_page(page-1))
     return JsonResponse({'return': messages, 'page': page})
+
+
+# Авторизация пользователя ----------------------------------------------
+class LoginView(TemplateView):
+    template_name = "registration/login.html"
+
+    @csrf_exempt
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            # Если пользователь авторизован переходим в профиль
+            return redirect('rooms')
+
+        if request.method == 'POST':
+            username = request.POST.get('login')
+            password = request.POST.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('rooms')
+
+        return render(request, self.template_name)
+
+
+# Выход
+def exit(request):
+    logout(request)
+    return redirect('login')
