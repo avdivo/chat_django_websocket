@@ -9,3 +9,20 @@
 Выходиз чата осуществляется на экран выбора комнат. Выход с экрана выбора комнат происходит на экран авторизации. Происходит разлогинивание.
 
 Для установки сачать репозиторий через GIT:
+git clone git@github.com:avdivo/chat_django_websocket.git
+
+cd chat_django_websocket/
+
+Установка зависимостей:
+pip install -r requirements.txt
+
+Запуск сервера:
+python3 manage.py runserver
+
+Запуск Celery (в новом терминале):
+celery -A chat worker -l info
+
+Отккрыть браузер и перейти по адресу:
+http://127.0.0.1:8000/
+
+В БД зарегистрированы 2 пользователя: alex (пароль - 1), elena (пароль - abcd4321)
