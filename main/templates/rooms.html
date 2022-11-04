@@ -17,7 +17,6 @@
         <h5 class="modal-title" id="exampleModalLabel">Выбор комнаты</h5>
            <h4><a href="{% url 'exit' %}"><i class="fa fa-sign-out" aria-hidden="true"></i></a></h4>
       </div>
-      <form action="{% url 'login' %}" method="POST">
         {% load static %}
           {% for room in rooms %}
               <a href="{% url 'chat' room %}" class="text-decoration-none text-reset">
@@ -28,31 +27,15 @@
               </a>
           {% endfor %}
       <div class="modal-header">
-        <input type="text" class="form-control" name="login">
-        <button type="submit" class="btn btn-primary">Войти</button>
+        <input type="text" class="form-control" name="room" id="room">
+        <button id="new_room" class="btn btn-primary">Войти</button>
       </div>
-      </form>
     </div>
   </div>
 </div>
 
-    <script>
-      const roomName = {% url 'chat' %};
-      alert(roomName)
-      const modal = new bootstrap.Modal(document.querySelector('#exampleModal'));
-      modal.show();
-
-        $('#exampleModal').on('shown.bs.modal', function() {
-            // #myInput - id элемента, которому необходимо установить фокус
-            $('#myInput').focus();
-        })
-
-        $('#exampleModal').modal({
-            show: false
-        });
-
-
-  </script>
+    <script src="{% static 'js/jquery-3.6.1.min.js' %}"></script>
+    <script src="{% static 'js/rooms_js.js' %}"></script>
 
 </body>
 </html>

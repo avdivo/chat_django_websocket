@@ -1,15 +1,175 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="utf-8"/>
-    <title>Chat Room</title>
+    <title>Комната чата</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
     {% load static %}
+
+
 </head>
+<style>
+    @use postcss-nested;
+
+    :root {
+      --send-bg: #0B93F6;
+      --send-color: white;
+      --receive-bg: #E5E5EA;
+      --receive-text: black;
+      --page-background: white;
+    }
+
+    body {
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
+        font-size: 20px;
+        font-weight: normal;
+      max-width: 800px;
+        margin: 50px auto;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--page-background);
+    }
+
+    .chat {
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    p {
+      max-width: 500px;
+      min-width: 250px;
+      word-wrap: break-word;
+      margin-bottom: 12px;
+      line-height: 24px;
+      position: relative;
+        padding: 10px 20px;
+      border-radius: 25px;
+
+      &:before, &:after {
+        content: "";
+            position: absolute;
+        bottom: 0;
+        height: 25px;
+      }
+    }
+
+    .send {
+        color: var(--send-color);
+        background: var(--send-bg);
+        align-self: flex-end;
+
+        &:before {
+            right: -7px;
+        width: 20px;
+        background-color: var(--send-bg);
+            border-bottom-left-radius: 16px 14px;
+        }
+
+        &:after {
+            right: -26px;
+        width: 26px;
+        background-color: var(--page-background);
+            border-bottom-left-radius: 10px;
+        }
+    }
+    .receive {
+        background: var(--receive-bg);
+        color: black;
+      align-self: flex-start;
+
+        &:before {
+            left: -7px;
+        width: 20px;
+        background-color: var(--receive-bg);
+            border-bottom-right-radius: 16px 14px;
+        }
+
+        &:after {
+            left: -26px;
+        width: 26px;
+        background-color: var(--page-background);
+            border-bottom-right-radius: 10px;
+        }
+    }
+
+    .date {
+        color: black;
+        background-color: #eeeeee; /*Цвет текстового поля*/
+        border-radius: 10px 10px 10px 10px; /*Закругляем уголки*/
+        text-align: center;
+    }
+
+   .header {
+      position: fixed; /* Фиксированное положение */
+      right: 0px; /* Расстояние от правого края окна браузера */
+      top: 0px; /* Расстояние сверху */
+      padding: 10px; /* Поля вокруг текста */
+      background: #fff; /* Цвет фона */
+      height: 20px;
+      width: 100%;
+      text-align: center;
+   }
+
+
+   .footer {
+      display: inline-block;
+      position: fixed; /* Фиксированное положение */
+      right: 0px; /* Расстояние от правого края окна браузера */
+      bottom: 0px; /* Расстояние сверху */
+      padding: 10px; /* Поля вокруг текста */
+      background: #fff; /* Цвет фона */
+      height: 50px;
+      width: 100%;
+      text-align: center;
+   }
+
+    .text {
+        border: 1px solid #DDD;
+        background-color: #eeeeee; /*Цвет текстового поля*/
+        border-radius: 10px 10px 10px 10px; /*Закругляем уголки*/
+        font-size: 20px;
+        height: 50px;
+        width: 800px;
+    }
+
+    .mes {
+        background-color: #eeeeee; /*Цвет текстового поля*/
+        border-radius: 10px 10px 10px 10px; /*Закругляем уголки*/
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .send_buton {
+        background-color: #fff;
+        font-size: 30px;
+        border: 0px;
+        cursor: pointer;
+    }
+
+    .datetime {
+        right: 0px; /* Расстояние от правого края */
+    }
+
+</style>
+
+
 <body>
-    <h2>Пользователь {{user}} в комнате {{ room }}</h2>
-    <div id="chat"></div>
-    <input id="message-input" type="text" size="100"><br>
-    <input id="btn-submit" type="button" value="Send">
+
+    <div class="chat" id="chat"></div>
+
+    <div class="header">
+        <span class="mes">Пользователь <b>{{ user }}</b> в комнате <b>{{ room }}</b></span>
+    </div>
+
+    <div class="footer">
+        <textarea class="text" id="message-input"></textarea>
+        <button id="btn-submit" class="send_buton">
+            <i class="fa fa-commenting-o" aria-hidden="true"></i>
+        </button>
+
+    </div>
 
 
     {{ room|json_script:"room-name" }}
