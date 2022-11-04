@@ -107,7 +107,7 @@
       top: 0px; /* Расстояние сверху */
       padding: 10px; /* Поля вокруг текста */
       background: #fff; /* Цвет фона */
-      height: 20px;
+      height: 28px;
       width: 100%;
       text-align: center;
    }
@@ -118,7 +118,7 @@
       position: fixed; /* Фиксированное положение */
       right: 0px; /* Расстояние от правого края окна браузера */
       bottom: 0px; /* Расстояние сверху */
-      padding: 10px; /* Поля вокруг текста */
+      padding: 5px; /* Поля вокруг текста */
       background: #fff; /* Цвет фона */
       height: 50px;
       width: 100%;
@@ -143,21 +143,40 @@
 
     .send_buton {
         background-color: #fff;
-        font-size: 30px;
+        font-size: 50px;
         border: 0px;
         cursor: pointer;
+        position: absolute;
+        top: 0;
+        margin-left: 10px;
     }
 
-    .datetime {
-        right: 0px; /* Расстояние от правого края */
+    .time {
+        float: right;
+        font-size: 16px;
     }
 
+    .check {
+        letter-spacing: -0.5em;
+        font-size: 14px;
+    }
+
+   .exit {
+      position: fixed; /* Фиксированное положение */
+      right: 20px; /* Расстояние от правого края окна браузера */
+      top: 0px; /* Расстояние сверху */
+      padding: 10px; /* Поля вокруг текста */
+      background: #fff; /* Цвет фона */
+      font-size: 30px;
+      text-align: center;
+   }
 </style>
 
 
 <body>
-
+    <p></p>
     <div class="chat" id="chat"></div>
+    <p id="new_mes"></p>
 
     <div class="header">
         <span class="mes">Пользователь <b>{{ user }}</b> в комнате <b>{{ room }}</b></span>
@@ -168,9 +187,9 @@
         <button id="btn-submit" class="send_buton">
             <i class="fa fa-commenting-o" aria-hidden="true"></i>
         </button>
-
     </div>
 
+    <div class="exit"><a href="{% url 'rooms' %}"><i class="fa fa-sign-out" aria-hidden="true"></i></a></div>
 
     {{ room|json_script:"room-name" }}
     {{ user|json_script:"user-name" }}
