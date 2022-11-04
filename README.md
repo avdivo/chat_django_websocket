@@ -13,24 +13,30 @@
 Для установки скачать репозиторий через GIT:
 git clone git@github.com:avdivo/chat_django_websocket.git
 
+Перейти в папку проекта:
 cd chat_django_websocket/
 
-Установка зависимостей:
+Активировать виртуальное окружение:
+source venv/bin/activate
+
+Установить зависимости:
 pip install -r requirements.txt
 
 Скачать образ Redis:
 docker pull redis
 
 Запустить Redis в контейнее:
-ocker run --name redis-server -d redis
+Docker run --name redis-server -d redis
 
-Запуск сервера:
+Запустить сервер:
 python3 manage.py runserver
 
-Запуск Celery (в новом терминале):
+Запустить Celery (в новом терминале):
 celery -A chat worker -l info
 
 Открыть браузер и перейти по адресу:
 http://127.0.0.1:8000/
 
 В БД зарегистрированы 2 пользователя: alex (пароль - 1), elena (пароль - abcd4321)
+Для редактирования и добавления пользователей зайти в панель администрирования Django под пользователем Alex:
+http://127.0.0.1:8000/admin/
