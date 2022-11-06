@@ -4,12 +4,12 @@ FROM python:3
 # set env variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-# ENV REDIS_PATH redis
+ENV REDIS_PATH redis
 
 ENV REDIS_HOST "redis"
 RUN mkdir /code
 WORKDIR /code/
-RUN pip install -r requirements.txt
 ADD . /code/
+RUN pip install -r requirements.txt
 
 
