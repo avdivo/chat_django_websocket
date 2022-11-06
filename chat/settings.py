@@ -122,7 +122,7 @@ USE_TZ = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 print('-------------------------------------------------', BASE_DIR)
-STATIC_URL = '/static/'
+STATIC_URL = '/code/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
