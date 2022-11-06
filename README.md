@@ -60,6 +60,9 @@ cd chat_django_websocket/
 Выполнить команду:
 sudo docker-compose up
 
+Открыть в браузере:
+127.0.0.1:8000
+
 Для остановки (остановить и удалить созданные контейнеры):
 Ctrl+C
 sudo docker-compose down
