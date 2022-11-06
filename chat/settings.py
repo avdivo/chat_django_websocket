@@ -25,7 +25,7 @@ SECRET_KEY = '1*84y%estdc)_864c6yd=+6@n9thw3d9m^2m%mnn=s4+9^m^zg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['avdivo.ru']
+ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
@@ -132,12 +132,14 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
+            # "hosts": [('127.0.0.1', 6379)],
+            "hosts": [('redis', 6379)],
         },
     },
 }
 
-REDIS_HOST = '0.0.0.0'
+# REDIS_HOST = '0.0.0.0'
+REDIS_HOST = 'redis'
 REDIS_PORT = '6379'
 CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/1'
 CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}

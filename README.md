@@ -17,7 +17,7 @@ git clone https://github.com/avdivo/chat_django_websocket
 cd chat_django_websocket/
 
 Создать виртуальное окружение:
-virtualenv venv
+`virtualenv venv`
 
 Активировать виртуальное окружение:
 source venv/bin/activate
