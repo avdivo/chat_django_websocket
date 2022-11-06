@@ -26,15 +26,16 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 Скачать образ Redis:
-docker pull redis
+sudo docker pull redis
 
 Запустить Redis в контейнее:
-Docker run --name redis-server -d redis
+sudo docker start redis
 
 Запустить сервер:
 python3 manage.py runserver
 
-Запустить Celery (в новом терминале):
+Запустить Celery 
+(в новом терминале - открыть терминал, перейти в папку проекта, выполнить: source venv/bin/activate):
 celery -A chat worker -l info
 
 Открыть браузер и перейти по адресу:
