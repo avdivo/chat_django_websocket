@@ -10,6 +10,9 @@
 
 Перед установкой следует убедиться что на вашей машине установлены: GIT, PIP, virtualenv, Docker
 
+Запустить можно развернув приложение вручную или в Docker контейнере (описано ниже).
+
+
 Для установки скачать репозиторий через GIT:
 git clone https://github.com/avdivo/chat_django_websocket
 
@@ -44,3 +47,19 @@ http://127.0.0.1:8000/
 В БД зарегистрированы 2 пользователя: alex (пароль - 1), elena (пароль - abcd4321)
 Для редактирования и добавления пользователей зайти в панель администрирования Django под пользователем alex:
 http://127.0.0.1:8000/admin/
+
+
+Запуск Docker контейнере (Перед запуском следует установить Docker и Docker-compose)
+
+Скачать репозиторий через GIT:
+git clone https://github.com/avdivo/chat_django_websocket
+
+Перейти в папку проекта:
+cd chat_django_websocket/
+
+Выполнить команду:
+sudo docker-compose up
+
+Для остановки (остановить и удалить созданные контейнеры):
+Ctrl+C
+sudo docker-compose down
