@@ -121,8 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-print('-------------------------------------------------', BASE_DIR)
-STATIC_URL = '/code/static/'
+STATIC_URL = '/static/' #/code/static/ при деплое
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
