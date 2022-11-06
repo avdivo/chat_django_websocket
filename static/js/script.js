@@ -14,7 +14,7 @@ date_archive = date_now; // Дата, при выводе архивных со�
 var months = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля',
               'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря', ];
 
-const webSocket = new WebSocket('ws://' + window.location.host + '/ws/chat/' + roomName + '/');
+const webSocket = new WebSocket('wss://' + window.location.host + '/ws/chat/' + roomName + '/');
 
 webSocket.onmessage = function(e) {
     get_page();  // Получаем и выводим последнюю страницу истории сообщений
