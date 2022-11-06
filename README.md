@@ -11,7 +11,7 @@
 Перед установкой следует убедиться что на вашей машине установлены: GIT, PIP, virtualenv, Docker
 
 Для установки скачать репозиторий через GIT:
-git clone git@github.com:avdivo/chat_django_websocket.git
+git clone https://github.com/avdivo/chat_django_websocket
 
 Перейти в папку проекта:
 cd chat_django_websocket/
