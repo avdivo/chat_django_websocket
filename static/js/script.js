@@ -10,6 +10,7 @@ let page = 1  // Номер страниы загруженной последн
 mes_count = JSON.parse($('#mes-count').text());  // Сколько сообщений на момент входа (для пагинации)
 date_now = new Date(new Date().setHours(0,0,0,0));  // Текущая дата для текущих сообщений
 date_archive = date_now; // Дата, при выводе архивных сообщений
+let scroll_action = false // True Запретит сработку события
 
 var months = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля',
               'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря', ];
@@ -161,6 +162,7 @@ function get_page(scroll=1){
                 jQuery("html:not(:animated),body:not(:animated)").animate({scrollTop: destination}, 0);
             }
             $('#message-input').focus();
+            scroll_action = false  // Разрешаем перемотку вверх посл вывода партии сообщений
 
         } else {
             return
@@ -179,6 +181,10 @@ function get_page(scroll=1){
 
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
+    if (scroll_action){
+        return;
+    }
+    scroll_action = true;
     if (document.body.scrollTop < 20 && document.documentElement.scrollTop < 20) {
         get_page(0);
         // Переход к выведенным словам

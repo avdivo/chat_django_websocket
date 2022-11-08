@@ -120,7 +120,6 @@
         font-size: 20px;
         height: 50px;
         width: 800px;
-        margin: 10;
     }
 
     .mes {
@@ -159,3 +158,33 @@
       font-size: 30px;
       text-align: center;
    }
+
+@media screen and (max-width: 980px) {
+    .text {
+        border: 1px solid #DDD;
+        background-color: #eeeeee; /*Цвет текстового поля*/
+        border-radius: 10px 10px 10px 10px; /*Закругляем уголки*/
+        font-size: 20px;
+        height: 90px;
+        width: 330px;
+    }
+
+   .footer {
+      display: inline-block;
+      position: fixed; /* Фиксированное положение */
+      right: 0px; /* Расстояние от правого края окна браузера */
+      bottom: 0px; /* Расстояние сверху */
+      padding: 5px; /* Поля вокруг текста */
+      background: #fff; /* Цвет фона */
+      height: 100px;
+      width: 100%;
+      text-align: center;
+   }
+
+    .mes {
+        background-color: #eeeeee; /*Цвет текстового поля*/
+        border-radius: 10px 10px 10px 10px; /*Закругляем уголки*/
+        font-size: 20px;
+        text-align: center;
+    }
+}
