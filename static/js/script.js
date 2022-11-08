@@ -16,7 +16,7 @@ var months = ['Января', 'Февраля', 'Марта', 'Апреля', '�
               'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря', ];
 
 // Для сервера wss -----------------------------------------------------------------------------
-const webSocket = new WebSocket('wss://' + window.location.host + '/ws/chat/' + roomName + '/');
+const webSocket = new WebSocket('ws://' + window.location.host + '/ws/chat/' + roomName + '/');
 
 webSocket.onmessage = function(e) {
     get_page();  // Получаем и выводим последнюю страницу истории сообщений
@@ -181,11 +181,12 @@ function get_page(scroll=1){
 
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
-    if (scroll_action){
-        return;
-    }
-    scroll_action = true;
     if (document.body.scrollTop < 20 && document.documentElement.scrollTop < 20) {
+        if (scroll_action){
+            return;
+        }
+        scroll_action = true;
+
         get_page(0);
         // Переход к выведенным словам
         var destination = 30;
