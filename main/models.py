@@ -4,7 +4,7 @@ from django.utils.timezone import now
 
 from django.db.models.signals import post_save
 from chat.tasks import send_report
-from django.conf import settings
+from asgiref.sync import async_to_sync
 
 # Модель сообщения
 class Message(models.Model):
@@ -20,7 +20,7 @@ class Message(models.Model):
 
 def save_Mesage(sender, instance, **kwargs):
     print(instance.label)
-    send_report.delay(instance.label)
+    async_to_sync(send_report.delay(instance.label))
 
 # Для модели заказов
 post_save.connect(save_Mesage, sender=Message)  # Сигнал после сохранения

@@ -36,6 +36,7 @@ sudo docker pull redis
 
 Запустить Redis в контейнее:
 sudo docker start redis
+sudo docker run --name redid redis
 
 Запустить сервер:
 python3 manage.py runserver
