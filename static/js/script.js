@@ -55,6 +55,7 @@ webSocket.onmessage = function(e) {
     }
     if (data.what_it == 'message_status'){
         // Подтверждаем запись сообщения в БД
+        alert(data.message)
         $('#mes'+ data.message).append('<i class="fa fa-check" aria-hidden="true"></i>')
     }
     if (data.what_it == 'user_status'){
