@@ -1,0 +1,161 @@
+    @use postcss-nested;
+
+    :root {
+      --send-bg: #0B93F6;
+      --send-color: white;
+      --receive-bg: #E5E5EA;
+      --receive-text: black;
+      --page-background: white;
+    }
+
+    body {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        font-size: 20px;
+        font-weight: normal;
+        max-width: 800px;
+        margin: 50px auto;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--page-background);
+    }
+
+    .chat {
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    p {
+      max-width: 500px;
+      min-width: 250px;
+      word-wrap: break-word;
+      margin-bottom: 12px;
+      line-height: 24px;
+      position: relative;
+        padding: 10px 20px;
+      border-radius: 25px;
+
+      &:before, &:after {
+        content: "";
+            position: absolute;
+        bottom: 0;
+        height: 25px;
+      }
+    }
+
+    .send {
+        color: var(--send-color);
+        background: var(--send-bg);
+        align-self: flex-end;
+
+        &:before {
+            right: -7px;
+        width: 20px;
+        background-color: var(--send-bg);
+            border-bottom-left-radius: 16px 14px;
+        }
+
+        &:after {
+            right: -26px;
+        width: 26px;
+        background-color: var(--page-background);
+            border-bottom-left-radius: 10px;
+        }
+    }
+    .receive {
+        background: var(--receive-bg);
+        color: black;
+      align-self: flex-start;
+
+        &:before {
+            left: -7px;
+        width: 20px;
+        background-color: var(--receive-bg);
+            border-bottom-right-radius: 16px 14px;
+        }
+
+        &:after {
+            left: -26px;
+        width: 26px;
+        background-color: var(--page-background);
+            border-bottom-right-radius: 10px;
+        }
+    }
+
+    .date {
+        color: black;
+        background-color: #eeeeee; /*Цвет текстового поля*/
+        border-radius: 10px 10px 10px 10px; /*Закругляем уголки*/
+        text-align: center;
+    }
+
+   .header {
+      position: fixed; /* Фиксированное положение */
+      right: 0px; /* Расстояние от правого края окна браузера */
+      top: 0px; /* Расстояние сверху */
+      padding: 10px; /* Поля вокруг текста */
+      background: #fff; /* Цвет фона */
+      height: 28px;
+      width: 100%;
+      text-align: center;
+   }
+
+
+   .footer {
+      display: inline-block;
+      position: fixed; /* Фиксированное положение */
+      right: 0px; /* Расстояние от правого края окна браузера */
+      bottom: 0px; /* Расстояние сверху */
+      padding: 5px; /* Поля вокруг текста */
+      background: #fff; /* Цвет фона */
+      height: 70px;
+      width: 100%;
+      text-align: center;
+   }
+
+    .text {
+        border: 1px solid #DDD;
+        background-color: #eeeeee; /*Цвет текстового поля*/
+        border-radius: 10px 10px 10px 10px; /*Закругляем уголки*/
+        font-size: 20px;
+        height: 50px;
+        width: 800px;
+        margin: 10;
+    }
+
+    .mes {
+        background-color: #eeeeee; /*Цвет текстового поля*/
+        border-radius: 10px 10px 10px 10px; /*Закругляем уголки*/
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .send_buton {
+        background-color: #fff;
+        font-size: 50px;
+        border: 0px;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        margin-left: 10px;
+    }
+
+    .time {
+        float: right;
+        font-size: 16px;
+    }
+
+    .check {
+        letter-spacing: -0.5em;
+        font-size: 14px;
+    }
+
+   .exit {
+      position: fixed; /* Фиксированное положение */
+      right: 20px; /* Расстояние от правого края окна браузера */
+      top: 0px; /* Расстояние сверху */
+      padding: 10px; /* Поля вокруг текста */
+      background: #fff; /* Цвет фона */
+      font-size: 30px;
+      text-align: center;
+   }
