@@ -156,12 +156,12 @@ function get_page(scroll=1){
             out_date = out_date + '</div>'
             $('#chat').prepend(out_date);
 
+            $('#message-input').focus();
             if (scroll) {
                 // Переход к новым сообщениям
                 var destination = $('#new_mes').offset().top;
                 jQuery("html:not(:animated),body:not(:animated)").animate({scrollTop: destination}, 0);
             }
-            $('#message-input').focus();
             scroll_action = false  // Разрешаем перемотку вверх посл вывода партии сообщений
 
         } else {
