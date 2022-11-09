@@ -3,11 +3,9 @@ from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
-from .models import Message, Room
+from .models import Message
 from django.views.decorators.csrf import csrf_exempt
-from django.core import serializers
 import json
-from django.db.models import Count
 
 # Авторизация
 async def auth(request):
@@ -15,6 +13,8 @@ async def auth(request):
 
 # Выбор или создание комнаты
 def rooms(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
     rooms = Message.objects.values('room').distinct()
     rooms = [x['room'] for x in rooms]
     return render(request, 'rooms.html', locals())
@@ -23,7 +23,7 @@ def rooms(request):
 # Вход в чат
 def chat(request, room):
     if not request.user.is_authenticated:
-        return redirect('index')
+        return redirect('login')
     user = request.user.username
     mes_count = len(Message.objects.filter(room=room).order_by('-created'))
     return render(request, 'room.html', locals())
