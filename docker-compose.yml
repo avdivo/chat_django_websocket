@@ -24,7 +24,6 @@ services:
 networks:
   redis_net:
     name: redis_net
-    external: true
   nginx_net:
     name: nginx_net
     external: true
