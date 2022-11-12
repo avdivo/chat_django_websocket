@@ -2,26 +2,36 @@ version: '3.8'
 
 services:
 
-  redis:
-    container_name: redis
-    image: redis
-    restart: always
-    ports:
-      - 6379:6379
+#  redis:
+#    container_name: redis
+#    image: redis
+#    restart: always
+#    ports:
+#      - 6379:6379
 
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
+    networks:
+      redis_net:
+      nginx_net:
     volumes:
       - .:/code
     restart: always
     ports:
-      - 80:8000
+      - 0.0.0.0:8001:8000
 
-  celery:
-    build: .
-    command: celery -A chat worker -l info
-
-    links:
-     - redis
+networks:
+  redis_net:
+    name: redis_net
+    external: true
+  nginx_net:
+    name: nginx_net
+    external: true
+#  celery:
+#    build: .
+#    command: celery -A chat worker -l info
+#
+#    links:
+#     - redis
 
