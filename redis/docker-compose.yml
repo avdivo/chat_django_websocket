@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  redis:
+    container_name: redis
+    image: redis
+    networks:
+      redis_net:
+    restart: always
+    ports:
+      - 6379:6379
+
+networks:
+  redis_net:
+    name: redis_net
