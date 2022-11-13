@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
-from main import views
 from main.views import *
+
+# Для добавления префикса к URL адресам
+from django.conf.urls import include
+from django.conf import settings
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,3 +31,7 @@ urlpatterns = [
     path('chat/<str:room>/', chat, name='chat'),
 
 ]
+
+# Добавляем префикс ко всем URL адресам
+if settings.URL_PREFIX:
+    urlpatterns = [path(f'{settings.URL_PREFIX}/', include(urlpatterns))]

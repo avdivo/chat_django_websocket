@@ -25,6 +25,7 @@ SECRET_KEY = '1*84y%estdc)_864c6yd=+6@n9thw3d9m^2m%mnn=s4+9^m^zg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+URL_PREFIX = 'chat'  # Если префикс не пустой,то он будет добавлен ко всем URL адресам
 
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'avdivo.ru']
 
