@@ -27,7 +27,7 @@ DEBUG = True
 
 URL_PREFIX = 'chat'  # Если префикс не пустой,то он будет добавлен ко всем URL адресам
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'avdivo.ru']
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'avdivo.ru', 'chat']
 
 
 # Application definition
