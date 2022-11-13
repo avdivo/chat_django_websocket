@@ -123,7 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-STATIC_URL = '/static/'
+STATIC_URL = '/chat/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
