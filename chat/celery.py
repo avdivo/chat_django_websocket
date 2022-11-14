@@ -2,7 +2,7 @@ import os
 from celery import Celery
 
 
-# set the default Django settings module for the 'celery' program.
+# установите модуль настроек Django по умолчанию для Celery
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chat.settings')
 
 from django.conf import settings  # noqa

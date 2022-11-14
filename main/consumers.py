@@ -80,7 +80,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
 
     async def receive(self, text_data=None, bytes_data=None):
-        print(self.scope['user'].is_anonymous, self.scope['user'], '===================')
+        # print(self.scope['user'].is_anonymous, self.scope['user'], '===================')
         if self.scope['user'].is_anonymous:
             await self.close()
 
