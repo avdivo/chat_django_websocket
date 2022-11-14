@@ -13,11 +13,11 @@ services:
     ports:
       - 0.0.0.0:8001:8000
 
-  celery:
-    build: .
-    command: celery -A chat worker -l info
-    networks:
-      redis_net:
+#  celery:
+#    build: .
+#    command: celery -A chat worker -l info
+#    networks:
+#      redis_net:
 
 networks:
   redis_net:
