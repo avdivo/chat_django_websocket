@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
 
+    const prefix = JSON.parse($('#prefix').text());
     const modal = new bootstrap.Modal(document.querySelector('#exampleModal'));
     modal.show();
 
@@ -18,7 +19,7 @@ $(document).ready(function(){
         const regex = new RegExp('^[-.a-zA-Z0-9]+$');
         const v = $('#room').val()
         if (regex.test(v)) {
-            url = '/chat/' + v;
+            url = prefix + '/room/' + v;
             $(location).attr('href',url);
         } else {
             alert('Некорректное название комнаты')

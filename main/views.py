@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from .models import Message
 from django.views.decorators.csrf import csrf_exempt
 import json
+from django.conf import settings
 
 # Авторизация
 async def auth(request):
@@ -17,6 +18,7 @@ def rooms(request):
         return redirect('login')
     rooms = Message.objects.values('room').distinct()
     rooms = [x['room'] for x in rooms]
+    prefix = '/' + settings.URL_PREFIX
     return render(request, 'rooms.html', locals())
 
 

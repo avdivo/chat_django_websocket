@@ -35,6 +35,12 @@
   </div>
 </div>
 
+    {% if prefix == '/' %}
+        {{ ''|json_script:"prefix" }}
+    {% else %}
+        {{ prefix|json_script:"prefix" }}
+    {% endif %}
+
     <script src="{% static 'js/jquery-3.6.1.min.js' %}"></script>
     <script src="{% static 'js/rooms_js.js' %}"></script>
 
