@@ -16,6 +16,7 @@ services:
   celery:
     build: .
     command: celery -A chat worker -l info
+    restart: always
     networks:
       redis_net:
 
