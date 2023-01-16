@@ -8,7 +8,7 @@ def send_report(label : str):
     channel = label[:label.rindex('.')]  # [channel.user].number
     number = label[label.rindex('.')+1:]  # channel.user.[number]
     user = label[label.index('.')+1:label.rindex('.')]  # channel.[user].number
-    async_to_sync(channel_layer.group_send)(
+    async_to_synca(channel_layer.group_send)(
         channel,
         {
             'type': 'chat_message',

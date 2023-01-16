@@ -1,5 +1,5 @@
 # pull the official docker image
-FROM python:3
+FROM python:3.10-slim-buster
 
 # set env variables
 ENV PYTHONDONTWRITEBYTECODE 1

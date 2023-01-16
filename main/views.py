@@ -8,6 +8,8 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from django.conf import settings
 
+from datetime import datetime
+
 # Авторизация
 async def auth(request):
     return render(request, 'login.html')
@@ -66,8 +68,8 @@ class LoginView(TemplateView):
             if user is not None:
                 login(request, user)
                 return redirect('rooms')
-
-        return render(request, self.template_name)
+        now_datetime = datetime.now()
+        return render(request, self.template_name, locals())
 
 
 # Выход
